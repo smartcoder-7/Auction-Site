@@ -1,0 +1,7 @@
+venv
+*.sock
+postgres_data
+docker/ssh/*/id_rsa*
+docker/ssh/*/*.pem
+*.pyc
+fabric_settings.py

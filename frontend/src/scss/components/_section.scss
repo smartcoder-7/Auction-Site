@@ -1,0 +1,38 @@
+.section {
+  &:not(:last-child) {
+    margin-bottom: $section-spacing / 2;
+
+    @include media-breakpoint-up('md') {
+      margin-bottom: $section-spacing;
+    }
+  }
+
+  &--mb-mobile {
+    @include media-breakpoint-down('sm') {
+      margin-bottom: $section-spacing / 2;
+    }
+  }
+
+  &__header {
+    margin-bottom: $section-header-spacing-responsive;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    @include media-breakpoint-up('md') {
+      margin-bottom: $section-header-spacing;
+    }
+  }
+
+  &__footer {
+    margin-top: 2.5rem;
+    text-align: center;
+    @include media-breakpoint-up('md') {
+      display: none;
+    }
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

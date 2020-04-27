@@ -1,0 +1,14 @@
+.navbar-expand {
+  &-md, &-lg {
+    .navbar-nav .nav-link {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      text-transform: uppercase;
+      font-family: $headings-font-family;
+    }
+  }
+}
+
+.nav {
+  font-family: $headings-font-family;
+}

@@ -1,0 +1,7 @@
+.app-layout1 {
+  &__content {
+    @include media-breakpoint-up('sm') {
+      display: flex;
+    }
+  }
+}

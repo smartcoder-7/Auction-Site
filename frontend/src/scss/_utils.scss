@@ -1,0 +1,39 @@
+html, body {
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.5px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.menu-tick {
+  position: absolute;
+  left: 6px;
+  top: 4px;
+}
+
+.decoration-none {
+  text-decoration: none !important;
+}
+
+.outline-none {
+  outline: none !important;
+}
+
+.submit-wrapper {
+  padding-top: 1.25rem;
+}
+
+.text-black {
+  color: $black;
+}
+
+.bordered-box {
+  border: 3px solid $admin-gray;
+  padding: 25px;
+
+  &.no-bottom-padding {
+    padding-bottom: 0;
+  }
+}

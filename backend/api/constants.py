@@ -1,0 +1,2 @@
+CONTENT_TYPE_AUCTION = 'auction'
+CONTENT_TYPE_USER = 'user'

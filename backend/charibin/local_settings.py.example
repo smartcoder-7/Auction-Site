@@ -1,0 +1,64 @@
+# Debug settings. Remove this line for local development
+
+DEBUG = False
+
+
+# Allowed hosts. Include front end domain here.
+
+ALLOWED_HOSTS = ['']
+
+
+# Site URL
+
+SITE_URL = 'https://www.charibin.com'
+
+
+# Database
+# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+
+DATABASES['default'] = {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'databasename',
+    'USER': 'username',
+    'PASSWORD': 'password',
+    'HOST': '127.0.0.1',
+}
+
+
+# Django CORS Headers
+
+CORS_ORIGIN_WHITELIST = (
+    'front-end-site-domain.com'
+)
+
+
+# Facebook API Configuration
+
+FACEBOOK_APP_VERSION = '2.10'
+
+
+# Temporary file storage path
+
+TMP_DIR_PATH = '/tmp/charibin'
+
+
+# Amazon S3 credentials
+
+AMAZON_S3_REGION = 'us-east-2'
+AMAZON_S3_BUCKET = 'bucket-name-here'
+AMAZON_S3_ACCESS_KEY_ID = 'SD9A84B3GAOSUG34BT9B'
+AMAZON_S3_ACCESS_SECRET = 'Awieu7690guVi67HTvi697vUyf+iugIKv787gHkv'
+
+
+# Stripe credentials
+
+PINAX_STRIPE_PUBLIC_KEY = ''
+PINAX_STRIPE_SECRET_KEY = ''
+
+
+# Mailgun config
+
+ANYMAIL = {
+    "MAILGUN_API_KEY": "<your Mailgun key>",
+    "MAILGUN_SENDER_DOMAIN": 'mg.example.com',
+}
