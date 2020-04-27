@@ -1,0 +1,101 @@
+import React, { PureComponent } from 'react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import Immutable from 'immutable'
+import PropTypes from 'prop-types'
+import ImmutablePropTypes from 'react-immutable-proptypes'
+import { withRouter } from 'react-router'
+import RichTextEditor from 'react-rte'
+
+import DonorForm from 'components/DonorForm'
+import SectionTitle from 'components/SectionTitle'
+import Spinner from 'components/Spinner'
+import { formSubmit } from 'utils/form'
+import { getCharityList } from 'store/modules/admin/charities'
+import { createDonor } from 'store/modules/admin/donors'
+import { adminCharitiesSelector } from 'store/selectors'
+
+
+class AdminDonorCreate extends PureComponent {
+
+  static propTypes = {
+    adminCharities: ImmutablePropTypes.map.isRequired,
+    getCharityList: PropTypes.func.isRequired,
+    createDonor: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+  }
+
+  handleSubmit = (data) => {
+    const { createDonor, history } = this.props
+    const formData = data.set(
+      'description',
+      data.get('description').toString('html')
+    )
+
+    return formSubmit(createDonor, {
+      data: formData,
+      success: ({ data }) => {
+        history.push({
+          pathname: `/admin/do-gooders/${data.pk}`
+        })
+      }
+    })
+  }
+
+  handleBack = () => this.props.history.push({
+    pathname: '/admin/do-gooders'
+  })
+
+  componentWillMount() {
+    const { adminCharities } = this.props
+    const charityListLoaded = adminCharities.get('charityListLoaded')
+    if (!charityListLoaded) {
+      this.props.getCharityList()
+    }
+  }
+
+  render() {
+    const { adminCharities } = this.props
+    const charityListLoaded = adminCharities.get('charityListLoaded')
+    const charityList = adminCharities.get('charityList')
+
+    const _donorDetail = Immutable.Map({
+      description: RichTextEditor.createEmptyValue(),
+      charity_ids: Immutable.List(),
+    })
+
+    return (
+      <div>
+        <div>
+          <SectionTitle className="mb-5">Create Do-Gooder</SectionTitle>
+
+          {!charityListLoaded && <Spinner />}
+
+          {charityListLoaded &&
+            <DonorForm
+              initialValues={_donorDetail}
+              charityList={charityList}
+              onSubmit={this.handleSubmit}
+              onBack={this.handleBack}
+            />
+          }
+        </div>
+      </div>
+    )
+  }
+}
+
+const selector = createStructuredSelector({
+  adminCharities: adminCharitiesSelector,
+})
+
+const actions = {
+  getCharityList,
+  createDonor,
+}
+
+export default compose(
+  withRouter,
+  connect(selector, actions)
+)(AdminDonorCreate)

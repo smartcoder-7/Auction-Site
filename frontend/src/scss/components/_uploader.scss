@@ -1,0 +1,34 @@
+.uploader-dropzone {
+  background-size: contain;
+  background-position: center;
+}
+
+.uploader {
+  .dropzone-wrapper {
+    position: relative;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+
+    &.bordered {
+      border: 2px dotted #d0dadc;
+      border-radius: 3px;
+    }
+  }
+}
+
+.dropzone-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  font-size: 30px;
+  margin-top: -5px;
+  z-index: -1;
+}
+
+.dropzone-plus-text {
+  font-size: 18px;
+  font-weight: bold;
+  vertical-align: 8%;
+}

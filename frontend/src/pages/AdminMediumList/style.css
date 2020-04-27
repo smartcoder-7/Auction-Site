@@ -1,0 +1,22 @@
+.medium-wrapper img {
+  border-radius: 5px;
+}
+
+.medium-list-wrapper {
+  border: 3px solid #f9f8fe;
+  padding: 25px;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-top: 60%;
+}
+
+.video-wrapper video,
+.video-wrapper audio {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}

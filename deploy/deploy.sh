@@ -1,0 +1,18 @@
+# build
+source venv/bin/activate
+cd backend
+pip install -r ./requirements.txt
+./manage.py migrate
+./manage.py collectstatic --noinput
+cd ..
+deactivate
+cd frontend
+yarn
+yarn run build
+cd ..
+
+# permission
+sudo chown www-data:ubuntu -R /var/www/auction-tmp/frontend/build
+
+# restart app
+sudo systemctl restart gunicorn
